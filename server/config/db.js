@@ -46,7 +46,10 @@ const connectDB = async () => {
     if (!process.env.MONGO_URI || uri.includes('127.0.0.1') || uri.includes('localhost')) {
       const User = require('../models/User');
       const adminExists = await User.findOne({ email: 'admin@eventsync.com' });
+      const bcrypt = require('bcryptjs');
+    
       if (!adminExists) {
+          const hashedPassword = await bcrypt.hash('password123',10);
         await User.create({
           name: 'Super Admin',
           email: 'admin@eventsync.com',
