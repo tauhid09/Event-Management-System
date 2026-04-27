@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
@@ -5,9 +7,10 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const path = require('path');
 
-// Load environment variables
-dotenv.config();
+// Load environment variables (resolve .env relative to this file)
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const connectDB = require('./config/db');
 const { initSocket } = require('./config/socket');
@@ -61,7 +64,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Handle unmatched routes
-app.all('{*splat}', (req, res, next) => {
+app.all('*', (req, res, next) => {
   next(new AppError(`Route ${req.originalUrl} not found`, 404));
 });
 

@@ -8,7 +8,11 @@
     "dev": "node --watch server.js",
     "seed": "node seeds/seed.js"
   },
-  "keywords": ["events", "management", "booking"],
+  "keywords": [
+    "events",
+    "management",
+    "booking"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -23,7 +27,8 @@
     "express-validator": "^7.2.1",
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.12.1",
+    "mongodb-memory-server": "^11.0.1",
+    "mongoose": "^8.9.5",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.2",
     "nodemailer": "^6.10.0",
